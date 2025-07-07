@@ -1,0 +1,167 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:flight_number",
+ "creation": "2025-07-07 21:15:53.199054",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "flight_number",
+  "origin",
+  "terminal",
+  "delay_duration",
+  "latitude",
+  "column_break_meho",
+  "destination",
+  "gate",
+  "status",
+  "airline",
+  "longitude",
+  "departure_section",
+  "estimated_departure",
+  "scheduled_departure",
+  "column_break_otjh",
+  "actual_departure",
+  "arrival_section",
+  "scheduled_arrival",
+  "estimated_arrival",
+  "column_break_sdni",
+  "actual_arrival"
+ ],
+ "fields": [
+  {
+   "fieldname": "flight_number",
+   "fieldtype": "Data",
+   "label": "Flight Number",
+   "unique": 1
+  },
+  {
+   "fieldname": "origin",
+   "fieldtype": "Data",
+   "label": "Origin"
+  },
+  {
+   "fieldname": "terminal",
+   "fieldtype": "Data",
+   "label": "Terminal"
+  },
+  {
+   "fieldname": "delay_duration",
+   "fieldtype": "Int",
+   "label": "Delay Duration"
+  },
+  {
+   "fieldname": "column_break_meho",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "destination",
+   "fieldtype": "Data",
+   "label": "Destination"
+  },
+  {
+   "fieldname": "gate",
+   "fieldtype": "Data",
+   "label": "Gate"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nScheduled\nBoarding\nEn Route\nLanded\nDelayed\nCancelled"
+  },
+  {
+   "fieldname": "latitude",
+   "fieldtype": "Float",
+   "label": "Latitude"
+  },
+  {
+   "fieldname": "longitude",
+   "fieldtype": "Float",
+   "label": "Longitude"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "departure_section",
+   "fieldtype": "Section Break",
+   "label": "Departure"
+  },
+  {
+   "fieldname": "estimated_departure",
+   "fieldtype": "Datetime",
+   "label": "Estimated Departure"
+  },
+  {
+   "fieldname": "scheduled_departure",
+   "fieldtype": "Datetime",
+   "label": "Scheduled Departure"
+  },
+  {
+   "fieldname": "column_break_otjh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "actual_departure",
+   "fieldtype": "Datetime",
+   "label": "Actual Departure"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "arrival_section",
+   "fieldtype": "Section Break",
+   "label": "Arrival"
+  },
+  {
+   "fieldname": "scheduled_arrival",
+   "fieldtype": "Datetime",
+   "label": "Scheduled Arrival"
+  },
+  {
+   "fieldname": "estimated_arrival",
+   "fieldtype": "Datetime",
+   "label": "Estimated Arrival"
+  },
+  {
+   "fieldname": "column_break_sdni",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "actual_arrival",
+   "fieldtype": "Datetime",
+   "label": "Actual Arrival"
+  },
+  {
+   "fieldname": "airline",
+   "fieldtype": "Link",
+   "label": "Airline",
+   "options": "Airline"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-07-07 21:26:20.564493",
+ "modified_by": "Administrator",
+ "module": "Flight Monitor",
+ "name": "Flight",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
