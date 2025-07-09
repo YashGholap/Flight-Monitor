@@ -242,16 +242,16 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
-# scheduler_events = {
-# 	"hourly": [
-# 		"flight_monitor.aviation_api.flight_sync.sync_flight_statuses"
-# 	],  
-#     # "cron": {
-#     #     "*/2 * * * *":[
-#     #         "flight_monitor.aviation_api.flight_sync.enque_sync_flight"
-#     #     ]
-#     # }
-# }
+scheduler_events = {
+	"hourly": [
+		"flight_monitor.aviation_api.flight_sync.enque_sync_flight"
+	],  
+    # "cron": {
+    #     "*/2 * * * *":[
+    #         "flight_monitor.aviation_api.flight_sync.enque_sync_flight"
+    #     ]
+    # }
+}
 
 fixtures = [
     # Roles
