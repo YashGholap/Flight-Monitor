@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "field:airline",
  "creation": "2025-07-07 21:24:30.055389",
@@ -19,7 +20,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-07 21:25:09.699905",
+ "modified": "2025-07-09 16:50:19.423745",
  "modified_by": "Administrator",
  "module": "Flight Monitor",
  "name": "Airline",
