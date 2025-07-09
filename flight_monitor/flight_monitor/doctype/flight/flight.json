@@ -43,11 +43,14 @@
   {
    "fieldname": "terminal",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Terminal"
   },
   {
    "fieldname": "delay_duration",
    "fieldtype": "Int",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Delay Duration"
   },
   {
@@ -57,18 +60,22 @@
   {
    "fieldname": "destination",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Destination"
   },
   {
    "fieldname": "gate",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Gate"
   },
   {
    "fieldname": "status",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Status",
-   "options": "\nScheduled\nBoarding\nEn Route\nLanded\nDelayed\nCancelled"
+   "options": "Scheduled\nBoarding\nEn Route\nLanded\nDelayed\nCancelled\nActive"
   },
   {
    "fieldname": "latitude",
@@ -133,6 +140,8 @@
   {
    "fieldname": "airline",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Airline",
    "options": "Airline"
   }
@@ -140,7 +149,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-07 21:26:20.564493",
+ "modified": "2025-07-09 12:12:25.487410",
  "modified_by": "Administrator",
  "module": "Flight Monitor",
  "name": "Flight",

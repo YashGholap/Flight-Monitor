@@ -1,9 +1,25 @@
 import requests
 import frappe
 import json
-# from frappe.utils import get_datetime, get_datetime_str
 from datetime import datetime
 from frappe.model.meta import get_meta
+
+
+
+def enque_sync_flight():
+    """
+    This Function takes flight sync function and runs in background through worker.
+    """
+    try:
+        frappe.enqueue(
+            method="flight_monitor.aviation_api.flight_sync.sync_flight_statuses",
+            queue="default",
+            is_async=True
+        )
+        frappe.log_error("Flight Sync Enqueue", "Function sync_flight_statuses enqueued successfully")
+    except Exception as e:
+        frappe.log_error("Flight Sync Enqueue", f"Error : {e}\n Traceback: {frappe.get_traceback()}")
+        raise 
 
 def ensure_arline_exists(payload: dict) -> None:
     """
@@ -52,19 +68,16 @@ def ensure_status_option(status_value: str):
         frappe.clear_cache(doctype="Flight")
 
 
-def sync_flight_statuses(): # payload: dict
+def sync_flight_statuses(): 
     """
     Fetchs live flight data from external API and upserts records into the flight doctype.
     """
-    # get settings
     settings_doc = frappe.get_single("Flight Settings")
     creds = settings_doc.get_credentials()
-    # # print(creds)
     api_key = creds.get("api_key")
 
     if not api_key:
         frappe.log_error("sync flight statuses", "Missing Flight API Key in Flight Settings")
-        # frappe.throw("Missing Flight API Key in Flight Settings")
         return
     
     # # use API URL from doc or switch to aviation stack as default
@@ -76,9 +89,6 @@ def sync_flight_statuses(): # payload: dict
         response = requests.get(endpoint, timeout=30)
         response.raise_for_status()
         data = response.json()
-        # data = response.json()
-        # data = json.dumps(data, indent= 4)
-        # data = payload.get("data", [])
         frappe.log_error("Aviation Stack Payload", f"{data}")
     except Exception as e:
         frappe.log_error("sync_flight_statuses", f"Flight API request failed: {e}")
@@ -146,5 +156,4 @@ def sync_flight_statuses(): # payload: dict
             frappe.log_error("Sync flight statuses", f"Error: {e}")
             
     frappe.db.commit()
-
-# payload = {"data":[{"flight_date":"2025-07-09","flight_status":"landed","departure":{"airport":"Sydney Kingsford Smith Airport","timezone":"Australia/Sydney","iata":"SYD","icao":"YSSY","terminal":"2","gate":"45","delay":15,"scheduled":"2025-07-09T10:30:00+00:00","estimated":"2025-07-09T10:30:00+00:00","actual":"2025-07-09T10:44:00+00:00","estimated_runway":"2025-07-09T10:44:00+00:00","actual_runway":"2025-07-09T10:44:00+00:00"},"arrival":{"airport":"Melbourne - Tullamarine Airport","timezone":"Australia/Melbourne","iata":"MEL","icao":"YMML","terminal":"3","gate":"3","baggage":null,"scheduled":"2025-07-09T12:05:00+00:00","delay":null,"estimated":"2025-07-09T12:00:00+00:00","actual":"2025-07-09T12:01:00+00:00","estimated_runway":"2025-07-09T12:01:00+00:00","actual_runway":"2025-07-09T12:01:00+00:00"},"airline":{"name":"Hawaiian Airlines","iata":"HA","icao":"HAL"},"flight":{"number":"4094","iata":"HA4094","icao":"HAL4094","codeshared":{"airline_name":"virgin australia","airline_iata":"va","airline_icao":"voz","flight_number":"832","flight_iata":"va832","flight_icao":"voz832"}},"aircraft":null,"live":null},{"flight_date":"2025-07-09","flight_status":"scheduled","departure":{"airport":"Tokunoshima","timezone":"Asia/Tokyo","iata":"TKN","icao":"RJKN","terminal":null,"gate":"1","delay":null,"scheduled":"2025-07-09T19:00:00+00:00","estimated":"2025-07-09T19:00:00+00:00","actual":null,"estimated_runway":null,"actual_runway":null},"arrival":{"airport":"Kagoshima","timezone":"Asia/Tokyo","iata":"KOJ","icao":"RJFK","terminal":"D","gate":null,"baggage":null,"scheduled":"2025-07-09T20:15:00+00:00","delay":null,"estimated":null,"actual":null,"estimated_runway":null,"actual_runway":null},"airline":{"name":"Japan Airlines","iata":"JL","icao":"JAL"},"flight":{"number":"3798","iata":"JL3798","icao":"JAL3798","codeshared":null},"aircraft":null,"live":null},{"flight_date":"2025-07-09","flight_status":"scheduled","departure":{"airport":"Tokunoshima","timezone":"Asia/Tokyo","iata":"TKN","icao":"RJKN","terminal":null,"gate":"1","delay":null,"scheduled":"2025-07-09T19:00:00+00:00","estimated":"2025-07-09T19:00:00+00:00","actual":null,"estimated_runway":null,"actual_runway":null},"arrival":{"airport":"Kagoshima","timezone":"Asia/Tokyo","iata":"KOJ","icao":"RJFK","terminal":"D","gate":null,"baggage":null,"scheduled":"2025-07-09T20:15:00+00:00","delay":null,"estimated":null,"actual":null,"estimated_runway":null,"actual_runway":null},"airline":{"name":"ANA","iata":"NH","icao":"ANA"},"flight":{"number":"4354","iata":"NH4354","icao":"ANA4354","codeshared":{"airline_name":"japan airlines","airline_iata":"jl","airline_icao":"jal","flight_number":"3798","flight_iata":"jl3798","flight_icao":"jal3798"}},"aircraft":null,"live":null}]}
+    
