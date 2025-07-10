@@ -129,7 +129,7 @@ flight_monitor/
 ## ✅ Best Practices Followed
 
 - ✔️ `frappe.enqueue` used for async jobs
-- ✔️ Scheduler in `hooks.py` uses `cron` syntax for precision
+- ✔️ Scheduler in `hooks.py`
 - ✔️ Data normalization:
   - ISO timestamps → naive Python datetime
   - Dynamic Select field options (e.g. `status`) handled via `get_meta()`
