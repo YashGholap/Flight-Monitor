@@ -6,8 +6,6 @@
  "engine": "InnoDB",
  "field_order": [
   "api_key",
-  "update_interval",
-  "delay_alert_threshold",
   "api_base_url"
  ],
  "fields": [
@@ -19,16 +17,6 @@
    "reqd": 1
   },
   {
-   "fieldname": "update_interval",
-   "fieldtype": "Int",
-   "label": "Update Interval"
-  },
-  {
-   "fieldname": "delay_alert_threshold",
-   "fieldtype": "Int",
-   "label": "Delay Alert Threshold"
-  },
-  {
    "fieldname": "api_base_url",
    "fieldtype": "Data",
    "label": "API Base URL"
@@ -38,7 +26,7 @@
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2025-07-07 21:32:21.845411",
+ "modified": "2025-07-10 08:54:24.196258",
  "modified_by": "Administrator",
  "module": "Flight Monitor",
  "name": "Flight Settings",
