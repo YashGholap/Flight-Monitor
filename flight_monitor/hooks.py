@@ -253,40 +253,40 @@ scheduler_events = {
     # }
 }
 
-# fixtures = [
-#     # Roles
-#     {"dt": "Role", "filters": [["name", "in", [
-#         "Support Staff", "Traveler", "Operations Manager"
-#     ]]]},
+fixtures = [
+    # Roles
+    {"dt": "Role", "filters": [["name", "in", [
+        "Support Staff", "Traveler", "Operations Manager"
+    ]]]},
 
-#     # Permissions (Custom DocPerms)
-#     {"dt": "Custom DocPerm", "filters": [["parent", "in", [
-#         "Flight", "Airline", "Dashboard", "Dashboard Chart", "Report"
-#     ]]]},
+    # Permissions (Custom DocPerms)
+    {"dt": "Custom DocPerm", "filters": [["parent", "in", [
+        "Flight", "Airline", "Dashboard", "Dashboard Chart", "Report"
+    ]]]},
 
-#     # Reports
-#     {"dt": "Report", "filters": [["ref_doctype", "in", [
-#         "Flight", "Airline"
-#     ]]]},
+    # Reports
+    {"dt": "Report", "filters": [["ref_doctype", "in", [
+        "Flight", "Airline"
+    ]]]},
 
-#     # Dashboard Charts
-#     {"dt": "Dashboard Chart", "filters": [["document_type", "in", [
-#         "Flight"
-#     ]]]},
+    # Dashboard Charts
+    {"dt": "Dashboard Chart", "filters": [["document_type", "in", [
+        "Flight"
+    ]]]},
 
-#     # Dashboards (if you're using Workspace/Dashboard Doctype)
-#     {"dt": "Dashboard", "filters": [["name", "in", [
-#         "Flight Operations Dashboard"
-#     ]]]},
+    # Dashboards (if you're using Workspace/Dashboard Doctype)
+    {"dt": "Dashboard", "filters": [["name", "in", [
+        "Flight Operations Dashboard"
+    ]]]},
 
-#     # Web Pages (like track-flight)
-#     {"dt": "Web Page", "filters": [["name", "in", [
-#         "track-flight"
-#     ]]]},
+    # Web Pages (like track-flight)
+    {"dt": "Web Page", "filters": [["name", "in", [
+        "track-flight"
+    ]]]},
 
-#     # Property Setters (if you made dynamic field updates like adding fields to List View)
-#     {"dt": "Property Setter", "filters": [["doc_type", "in", [
-#         "Flight"
-#     ]]]}
-# ]
+    # Property Setters (if you made dynamic field updates like adding fields to List View)
+    {"dt": "Property Setter", "filters": [["doc_type", "in", [
+        "Flight"
+    ]]]}
+]
 
