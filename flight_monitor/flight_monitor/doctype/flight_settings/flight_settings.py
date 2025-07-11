@@ -12,7 +12,5 @@ class FlightSettings(Document):
 		"""
 		return {
 			"api_key": self.get_password("api_key"),
-			"update_interval": self.update_interval,
-			"delay_alert_threshold":self.delay_alert_threshold,
 			"api_base_url" : self.api_base_url
 		}
