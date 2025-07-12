@@ -67,7 +67,7 @@ def ensure_status_option(status_value: str):
         frappe.get_doc(meta.as_dict()).save()
         frappe.clear_cache(doctype="Flight")
 
-
+@frappe.whitelist()
 def sync_flight_statuses(): 
     """
     Fetchs live flight data from external API and upserts records into the flight doctype.
