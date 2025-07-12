@@ -84,14 +84,12 @@ Flight Monitor > Flight Settings
 - Enter your AviationStack API key
 - Optionally set the base URL
 
-### 2. Sync Flight Data (Manual)
 
-From the Frappe Console or API:
+### 2. Manual Sync Button on Flight List View
 
-```python
-from flight_monitor.aviation_api.flight_sync import sync_flight_statuses
-sync_flight_statuses()
-```
+A **manual sync button** has been added to the **Flight** Doctype list view.  
+When clicked, it triggers a background job to **sync the latest flight data** immediately, providing users with real-time updates on demand.
+
 
 ### 3. Automated Background Sync
 
@@ -115,7 +113,11 @@ scheduler_events = {
 flight_monitor/
 ├── aviation_api/
 │   └── flight_sync.py          # Main logic to sync flights
-|   └── get_flight_status.py    # for reports
+│   └── get_flight_status.py    # for reports
+├── flight_monitor/
+│   └── doctype
+│       └── flight
+│           └── flight_list.js  # for showing button `Sync Flight Data Manually` which syncs data on click.
 ├── config/
 │   └── desktop.py              # Module registration
 ├── public/
